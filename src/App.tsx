@@ -1,26 +1,33 @@
-import React from 'react'
-import logo from './logo.svg'
-import './App.css'
+import { Route, Switch, BrowserRouter as Router, Link } from 'react-router-dom'
+import { Container, AppBar, Toolbar, IconButton, Drawer } from '@material-ui/core'
+import MenuIcon from '@material-ui/icons/Menu'
 
-function App () {
+import React, { useState } from 'react'
+
+export default function App () {
+  const [open, setOpen] = useState(false)
+
+  function openMenu () {
+    setOpen(true)
+  }
+
+  function closeMenu () {
+    setOpen(false)
+  }
+
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <AppBar position='fixed'>
+        <Toolbar>
+          <IconButton color='inherit' onClick={openMenu}>
+            <MenuIcon />
+          </IconButton>
+        </Toolbar>
+        <h6>Ficus Tech</h6>
+      </AppBar>
+      <Drawer variant='persistent' anchor='left' open={open}>
+        
+      </Drawer>
+    </Container>
   )
 }
-
-export default App
